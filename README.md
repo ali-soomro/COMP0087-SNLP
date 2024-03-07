@@ -20,9 +20,6 @@ This project evaluates different Language Model-based approaches for sentiment a
 1. [Prerequisites](#installation)
 2. [Usage](#usage)
 3. [Project Structure](#project-structure)
-4. [Dependencies](#dependencies)
-5. [Contributing](#contributing)
-6. [License](#license)
 
 ## Installation
 
