@@ -87,6 +87,7 @@ def evaluate_batch(model, tokenizer, eval_dataset, batch_size=8):
 # Evaluate models
 for model_name, (model_class, tokenizer_class) in models.items():
     print(f"Evaluating {model_name}...")
+    logging.info(f"Evaluating {model_name}...")
     
     # Load pretrained model and tokenizer
     model = model_class.from_pretrained(model_name).cuda()
@@ -106,7 +107,6 @@ for model_name, (model_class, tokenizer_class) in models.items():
     print(f"PRC AUC: {prc_auc}")
     
     # Log scores to file
-    logging.info(f"Evaluating {model_name}...")
     logging.info(f"Accuracy: {accuracy}")
     logging.info(f"Macro F1 Score: {macro_f1}")
     logging.info(f"Micro F1 Score: {micro_f1}")
