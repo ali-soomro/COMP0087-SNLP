@@ -22,6 +22,8 @@ This project evaluates different Language Model-based approaches for sentiment a
 
 ## Prerequisites
 
+The experiments are performed on University College London's Computer Science "blaze" machine with Python 3.8.12
+
 1. Clone the repository:
 
    ```bash
