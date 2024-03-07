@@ -3,8 +3,6 @@
 
 This project evaluates different Language Model-based approaches for sentiment analysis. The goal is to explore how Language Models (LMs) pre-trained on generic text data can be effectively applied to sentiment analysis tasks across various domains. The project also investigates the robustness of these models to variations in sentiment expression.
 
-## Usage
-
 ## Table of Contents
 
 1. [Research Questions](#research-questions)
