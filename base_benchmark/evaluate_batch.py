@@ -3,13 +3,33 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score, roc_curve, auc, precision_recall_curve, matthews_corrcoef, cohen_kappa_score
 
 def evaluate_batch_imdb(model, tokenizer, eval_dataset, batch_size=8):
+    """
+    Evaluate the given model on the IMDb dataset.
+
+    Args:
+        model (torch.nn.Module): The PyTorch model to evaluate.
+        tokenizer (transformers.PreTrainedTokenizer): The tokenizer for tokenizing input text.
+        eval_dataset (Dataset): The dataset to evaluate the model on.
+        batch_size (int, optional): Batch size for evaluation. Defaults to 8.
+
+    Returns:
+        tuple: A tuple containing evaluation metrics (accuracy, macro_f1, micro_f1, weighted_f1,
+        mcc, kappa, roc_auc, prc_auc).
+    """
+    
+    # Set the model to evaluation mode
     model.eval()
+    
+    # Determine the device to use (GPU if available, else CPU)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    
+    # Initialize variables to store evaluation metrics
     total_accuracy = 0.0
     total_samples = 0
     all_labels = []
     all_predictions = []
-
+    
+    # Iterate over the evaluation dataset in batches
     with torch.no_grad():
         for i in range(0, len(eval_dataset), batch_size):
             batch = eval_dataset[i:i+batch_size]
@@ -23,9 +43,11 @@ def evaluate_batch_imdb(model, tokenizer, eval_dataset, batch_size=8):
             input_ids = inputs['input_ids']
             attention_mask = inputs['attention_mask']
 
+            # Forward pass through the model
             outputs = model(input_ids, attention_mask=attention_mask)
             predicted_labels = torch.argmax(outputs.logits, dim=1)
 
+            # Compute accuracy
             total_accuracy += accuracy_score(labels.cpu(), predicted_labels.cpu()) * len(batch)
             all_labels.extend(labels.cpu().tolist())
             all_predictions.extend(predicted_labels.cpu().tolist())
