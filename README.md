@@ -21,7 +21,6 @@ This project evaluates different Language Model-based approaches for sentiment a
 - **How robust are Language Model architectures to variations in sentiment expression, such as negations, sarcasm, or context-dependent sentiment?**
 
 ## Prerequisites
-Hmm
 
 1. Clone the repository:
 
