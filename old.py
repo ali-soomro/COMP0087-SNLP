@@ -1,4 +1,5 @@
 import torch
+import sys
 import pandas as pd
 from datasets import load_dataset
 from sklearn.model_selection import train_test_split
@@ -43,6 +44,8 @@ def compute_metrics(pred):
 # Train and evaluate models
 for model_name, (model_class, tokenizer_class) in models.items():
     print(f"Training and evaluating {model_name}...")
+    print(device)
+    
     model = model_class.from_pretrained(model_name, num_labels=2).to(device)
     tokenizer = tokenizer_class.from_pretrained(model_name)
     
