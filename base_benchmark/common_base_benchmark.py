@@ -49,6 +49,8 @@ def evaluateAllModels(dataset, dataset_name):
         test_dataset = dataset['test']
         if dataset_name == 'imdb':
             accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_imdb(model, tokenizer, test_dataset)
+        else:
+            raise ValueError(f"Invalid dataset name: {dataset_name}")
         
         print(f"Accuracy for {model_name}: {accuracy}")
         print(f"Macro F1 Score: {macro_f1}")
