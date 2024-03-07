@@ -3,6 +3,15 @@
 
 This project evaluates different Language Model-based approaches for sentiment analysis. The goal is to explore how Language Models (LMs) pre-trained on generic text data can be effectively applied to sentiment analysis tasks across various domains. The project also investigates the robustness of these models to variations in sentiment expression.
 
+## Usage
+
+## Table of Contents
+
+1. [Research Questions](#research-questions)
+2. [Prerequisites](#prerequisites)
+3. [Usage](#usage)
+4. [Project Structure](#project-structure)
+
 ## Research Questions
 
 ### 1. Transfer Learning
@@ -13,15 +22,8 @@ This project evaluates different Language Model-based approaches for sentiment a
 ### 2. Robustness
 - **How robust are Language Model architectures to variations in sentiment expression, such as negations, sarcasm, or context-dependent sentiment?**
 
-## Usage
-
-## Table of Contents
-
-1. [Prerequisites](#installation)
-2. [Usage](#usage)
-3. [Project Structure](#project-structure)
-
-## Installation
+## Prerequisites
+Hmm
 
 1. Clone the repository:
 
@@ -32,3 +34,7 @@ This project evaluates different Language Model-based approaches for sentiment a
 
    ```bash
    pip install -r requirements.txt
+
+## Usage
+
+## Project Structure
