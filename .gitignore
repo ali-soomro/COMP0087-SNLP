@@ -166,3 +166,5 @@ base_benchmark/__pycache__/
 base_benchmark/cache/
 base_benchmark/*.log
 tuning_benchmark/*.log
+tuning_benchmark/__pycache__/
+tuning_benchmark/cache/
