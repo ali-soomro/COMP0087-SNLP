@@ -16,6 +16,9 @@ model_name = "distilbert-base-uncased"
 
 emotion_dataset = load_dataset("emotion")
 
+print(emotion_dataset)
+emotion_dataset.info()
+
 model_class, tokenizer_class = getBaseModel("distilbert-base-uncased")
 model = model_class.from_pretrained(model_name).to("cuda")
 # num_labels = len(dataset['train'].features['label'].names)
@@ -24,3 +27,4 @@ model = model_class.from_pretrained(model_name).to("cuda")
 tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir="./cache")
 
 model = downstreamTrain(dataset=emotion_dataset, model=model)
+
