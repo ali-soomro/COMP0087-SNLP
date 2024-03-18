@@ -6,7 +6,6 @@ from transformers import AutoTokenizer
 import logging
 import datetime
 
-from evaluate_batch import *
 
 def start_logging(log_file=f'evaluation_{datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.log', log_level=logging.INFO):
     """

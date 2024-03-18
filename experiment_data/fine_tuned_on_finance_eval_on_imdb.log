@@ -1,0 +1,11 @@
+2024-03-18 14:12:23,264 - INFO - Logging started
+2024-03-18 14:12:27,257 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-18 14:26:02,501 - INFO - Evaluating distilbert-base-uncased...
+2024-03-18 14:26:02,502 - INFO - Accuracy: 0.66616
+2024-03-18 14:26:02,502 - INFO - Macro F1 Score: 0.6317308169403273
+2024-03-18 14:26:02,502 - INFO - Micro F1 Score: 0.66616
+2024-03-18 14:26:02,502 - INFO - Weighted F1 Score: 0.6317308169403274
+2024-03-18 14:26:02,502 - INFO - Matthews Correlation Coefficient: 0.420004841632107
+2024-03-18 14:26:02,502 - INFO - Cohen's Kappa Score: 0.33231999999999995
+2024-03-18 14:26:02,502 - INFO - ROC AUC: 0.6661600000000001
+2024-03-18 14:26:02,502 - INFO - PRC AUC: 0.7945338125496426
