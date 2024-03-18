@@ -8,8 +8,83 @@ from transformers import AdamW
 import logging
 import datetime
 from typing import Tuple, Dict, Union
+import sys
+from datasets import load_dataset
+from transformers import DistilBertTokenizer, DistilBertForSequenceClassification, Trainer, TrainingArguments
+import random
+from common_tune_benchmark import *
+from sklearn.model_selection import train_test_split
 
 from evaluate_batch import *
+
+def getDefaultTrainingArguments():
+    # Define training arguments
+    training_args = TrainingArguments(
+        per_device_train_batch_size=8,
+        per_device_eval_batch_size=8,
+        logging_steps=500,
+        save_steps=1000,
+        num_train_epochs=3,
+        logging_dir="./logs",
+        output_dir="./results"
+    )
+    return training_args
+
+def getBinaryDataset_Financial(tokenizer):
+    def tokenize_function(examples):
+        return tokenizer(examples['sentence'], padding='max_length', truncation=True)
+
+    # Should be called by filter_dataset
+    def adjust_labels(dataset):
+        if dataset['label'] == 2:
+            dataset['label'] = 1  # Convert positive sentiment to binary label 1
+        return dataset
+
+    def filter_and_adjust_dataset(dataset):
+        # Filter out neutral sentiments
+        filtered_dataset = dataset.filter(lambda example: example['label'] != 1)
+        # Adjust labels from 2 to 1
+        adjusted_dataset = filtered_dataset.map(adjust_labels)
+        return adjusted_dataset
+    
+    # Load dataset and then filter it
+    dataset = load_dataset("financial_phrasebank", "sentences_allagree")['train']
+
+    # Filter dataset
+    dataset = filter_and_adjust_dataset(dataset)
+    print(dataset)
+
+    # Should be binary labels {0, 1} now after dataset is filtered, removing neutral
+    unique_labels = set(dataset['label'])
+    print(f"Unique labels in the filtered dataset: {unique_labels}")
+
+    # Split the dataset into train and test sets
+    train_test_split = dataset.train_test_split(test_size=0.2)  # For example, 80% train, 20% test
+
+    # Extract the training and test sets
+    train_set = train_test_split['train']
+    test_set = train_test_split['test']
+
+    # Check the size of each set to confirm the split
+    print(f"Training set size: {len(train_set)}")
+    print(f"Test set size: {len(test_set)}")
+    
+    # Tokenized datasets after splitting
+    train_set = train_set.map(tokenize_function, batched=True)
+    test_set = test_set.map(tokenize_function, batched=True)
+    
+    return train_set, test_set
+    
+
+def getModel_Binary_DistilBert():
+    # Tokenization
+    tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+
+    # Define model
+    model = DistilBertForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=2)
+    
+    return model, tokenizer
+
 
 def start_logging(log_file=f'evaluation_{datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.log', log_level=logging.INFO):
     """
