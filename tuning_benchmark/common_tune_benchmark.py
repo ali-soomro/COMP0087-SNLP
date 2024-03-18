@@ -17,6 +17,15 @@ from sklearn.model_selection import train_test_split
 
 from evaluate_batch import *
 
+def evaluate_model(fine_tuned_model, tokenizer, dataset_name):
+    if dataset_name == 'imdb':
+        dataset = load_dataset(dataset_name)  # Load the IMDb dataset
+        imdb_test_dataset = dataset['test']
+        accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_imdb(fine_tuned_model, tokenizer, move_tensor_to_gpu(imdb_test_dataset))
+        printOrLogEvaluationScores('distilbert-base-uncased', accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
+    else:
+        print("Dataset not found")
+
 def getDefaultTrainingArguments():
     # Define training arguments
     training_args = TrainingArguments(
