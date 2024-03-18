@@ -17,14 +17,21 @@ from sklearn.model_selection import train_test_split
 
 from evaluate_batch import *
 
-def evaluate_model(fine_tuned_model, tokenizer, dataset_name):
+def evaluate_model(fine_tuned_model, tokenizer, dataset_name, custom_model_name='distilbert-base-uncased'):
+    retcode = 0
     if dataset_name == 'imdb':
         dataset = load_dataset(dataset_name)  # Load the IMDb dataset
         imdb_test_dataset = dataset['test']
         accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_imdb(fine_tuned_model, tokenizer, move_tensor_to_gpu(imdb_test_dataset))
-        printOrLogEvaluationScores('distilbert-base-uncased', accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
+        printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
+    elif dataset_name == 'finance':
+        train_set, finance_test_set = getBinaryDataset_Financial(tokenizer)
+        accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_finance(fine_tuned_model, tokenizer, move_tensor_to_gpu(finance_test_set))
+        printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
     else:
         print("Dataset not found")
+        retcode = -1
+    return retcode
 
 def getDefaultTrainingArguments():
     # Define training arguments
@@ -38,6 +45,23 @@ def getDefaultTrainingArguments():
         output_dir="./results"
     )
     return training_args
+
+def getBinaryDataset_IMDB(tokenizer):
+    def tokenize_function(examples):
+        return tokenizer(examples['text'], padding='max_length', truncation=True)
+    
+    # Load the IMDB dataset
+    dataset = load_dataset("imdb")
+
+    # The IMDB dataset already comes with predefined splits, so you can directly access them
+    train_set = dataset['train']
+    test_set = dataset['test']
+
+    # Tokenize the datasets
+    train_set = train_set.map(tokenize_function, batched=True)
+    test_set = test_set.map(tokenize_function, batched=True)
+    
+    return train_set, test_set
 
 def getBinaryDataset_Financial(tokenizer):
     def tokenize_function(examples):
