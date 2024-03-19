@@ -22,14 +22,14 @@ This project evaluates different Language Model-based approaches for sentiment a
 
 ## Prerequisites
 
-The experiments are performed on University College London's Computer Science "blaze" machine with Python 3.8.12
+The experiments are performed on UCL's Computer Science "blaze" machine with Python 3.8.12
 
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/ali-soomro/COMP0087-SNLP.git
    
-2. The following packages are used:
+2. Ensure that Python 3.8.12 is installed, and then install the following pip packages in your Python environment (I used a virtual environment):
 
    ```bash
    pip install -r requirements.txt
