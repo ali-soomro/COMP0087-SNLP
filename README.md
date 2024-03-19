@@ -1,4 +1,4 @@
-# COMP0087-SNLP
+# COMP0087 - Statistical Natural Language Processing
 
 
 This project evaluates different Language Model-based approaches for sentiment analysis. The goal is to explore how Large Language Models (LLMs) pre-trained on generic text data can be effectively applied to sentiment analysis tasks across various domains. These models are then fine-tuned using Transfer Learning techniques and the findings are reported. This project also investigates the robustness of these models to variations in sentiment expression.
