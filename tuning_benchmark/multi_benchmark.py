@@ -5,7 +5,7 @@ from amazon_tune import *
 from glue_tune import *
 
 def leave_one_out_fine_tuning_and_evaluation(input_string):
-    # Assuming getModel_Binary_DistilBert, getFineTunedModel_*, and evaluate_model are defined elsewhere
+    # Defining fine-tuning functions which take a model and tokenizer, and return the fine-tuned model
     dataset_functions = {
         '1': ('finance', getFineTunedModel_Finance, "Fine tuning on Finance"),
         '2': ('imdb', getFineTunedModel_IMDB, "Fine tuning on IMDB"),
@@ -25,7 +25,7 @@ def leave_one_out_fine_tuning_and_evaluation(input_string):
     for dataset_key in fine_tuning_datasets:
         dataset_name, fine_tuning_function, _ = dataset_functions[dataset_key]
         logging.info("Fine-tuning on " + dataset_name)
-        # Fine-tune model
+        # Fine-tuning the model on the particular dataset
         model = fine_tuning_function(model, tokenizer)
     
     # Evaluate on the left-out dataset
