@@ -21,7 +21,7 @@ combination = "124"
 
 # This will take a pretrained Distilbert, fine-tune it on finance (1), imdb (2), and sst2 (4) in that order.
 # It will then evaluate it on sst2 (3) and log the required metrics
-leave_one_out_fine_tuning_and_evaluation(combination)
+leave_one_out_fine_tuning_and_evaluation(input_string=combination, model_name=distilbert)
 # EXAMPLE USAGE 1
 # ---------------------------------------------------------------------
 
