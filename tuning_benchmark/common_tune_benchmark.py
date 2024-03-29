@@ -26,8 +26,15 @@ def evaluate_model(fine_tuned_model, tokenizer, dataset_name, custom_model_name=
         printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
     elif dataset_name == 'finance':
         train_set, finance_test_set = getBinaryDataset_Financial(tokenizer)
-        accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_finance(fine_tuned_model, tokenizer, move_tensor_to_gpu(finance_test_set))
+        accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_finance(fine_tuned_model, tokenizer, finance_test_set)
         printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
+    elif dataset_name == 'amazon':
+        train_set, test_set = getReducedTrainTestDataset_Amazon(tokenizer, 0.01)
+        accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_amazon(fine_tuned_model, tokenizer, test_set)
+        printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)        
+    elif dataset_name == 'sst2':
+        sst2_dataset_name = 'glue'  # The benchmark name
+        sst2_task_name = 'sst2'     # The task name within the benchmark
     else:
         print("Dataset not found")
         retcode = -1
@@ -62,6 +69,45 @@ def getBinaryDataset_IMDB(tokenizer):
     test_set = test_set.map(tokenize_function, batched=True)
     
     return train_set, test_set
+
+def getBinaryDataset_Amazon(tokenizer: PreTrainedTokenizer):
+    # Load the dataset
+    dataset = load_dataset("amazon_polarity")
+
+    # Tokenize the text function
+    def tokenize_function(examples):
+        return tokenizer(examples['content'], padding="max_length", truncation=True)
+    
+    # Apply the tokenization to the text of the dataset
+    tokenized_datasets = dataset.map(tokenize_function, batched=True)
+    
+    # Split the dataset into training and test sets
+    train_set = tokenized_datasets["train"]
+    test_set = tokenized_datasets["test"]
+    
+    print(f"Size of training set: {train_set.num_rows}")
+    print(f"Size of test set: {test_set.num_rows}")
+    
+    return train_set, test_set
+
+def getReducedTrainTestDataset_Amazon(tokenizer: PreTrainedTokenizer, sample_fraction: float = 0.1):
+    # Load the dataset
+    dataset = load_dataset("amazon_polarity")
+    
+    # Shuffle and reduce each of the original splits separately
+    reduced_train = dataset["train"].shuffle(seed=42).select(range(int(dataset["train"].num_rows * sample_fraction)))
+    reduced_test = dataset["test"].shuffle(seed=42).select(range(int(dataset["test"].num_rows * sample_fraction)))
+    
+    # Tokenize the text function
+    def tokenize_function(examples):
+        return tokenizer(examples['content'], padding="max_length", truncation=True)
+    
+    # Apply tokenization to reduced splits
+    tokenized_train_set = reduced_train.map(tokenize_function, batched=True)
+    tokenized_test_set = reduced_test.map(tokenize_function, batched=True)
+    
+    return tokenized_train_set, tokenized_test_set
+    
 
 def getBinaryDataset_Financial(tokenizer):
     def tokenize_function(examples):
@@ -149,6 +195,7 @@ def move_tensor_to_gpu(dataset: Dict[str, torch.Tensor]) -> Dict[str, torch.Tens
     return dataset
 
 
+
 def getBaseModel(model_name: str) -> Tuple[type, type]:
     """
     Returns the model and tokenizer corresponding to the given model name.
@@ -157,7 +204,7 @@ def getBaseModel(model_name: str) -> Tuple[type, type]:
         model_name (str): The name of the model.
 
     Returns:
-        tuple: A tuple containing the model class and tokenizer class.
+        tuple: A tuple containing the model class and tokenizer class.  
     """
     models = {
         "bert-base-uncased": (BertForSequenceClassification, BertTokenizer),
