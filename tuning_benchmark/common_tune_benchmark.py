@@ -33,8 +33,9 @@ def evaluate_model(fine_tuned_model, tokenizer, dataset_name, custom_model_name=
         accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_amazon(fine_tuned_model, tokenizer, test_set)
         printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)        
     elif dataset_name == 'sst2':
-        sst2_dataset_name = 'glue'  # The benchmark name
-        sst2_task_name = 'sst2'     # The task name within the benchmark
+        train_set, test_set = getBinaryDataset_SST2(tokenizer)
+        accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_sst2(fine_tuned_model, tokenizer, test_set)
+        printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)        
     else:
         print("Dataset not found")
         retcode = -1
@@ -52,6 +53,24 @@ def getDefaultTrainingArguments():
         output_dir="./results"
     )
     return training_args
+
+def getBinaryDataset_SST2(tokenizer: PreTrainedTokenizer):
+    def tokenize_function(examples):
+        # Adjust the field name if necessary. For SST-2, it's typically 'sentence'.
+        return tokenizer(examples['sentence'], padding='max_length', truncation=True)
+    
+    # Load the SST-2 dataset from the GLUE benchmark
+    dataset = load_dataset("glue", "sst2")
+
+    # The SST-2 dataset comes with predefined splits
+    train_set = dataset['train']
+    test_set = dataset['validation']  # GLUE's SST-2 uses 'validation' as the test set
+    
+    # Tokenize the datasets
+    train_set = train_set.map(tokenize_function, batched=True)
+    test_set = test_set.map(tokenize_function, batched=True)
+    
+    return train_set, test_set
 
 def getBinaryDataset_IMDB(tokenizer):
     def tokenize_function(examples):
