@@ -1,0 +1,48 @@
+2024-03-29 05:26:04,785 - INFO - Logging started
+2024-03-29 05:26:04,785 - INFO - Logging initiated from: multi_benchmark.py
+2024-03-29 05:26:04,785 - INFO - Combination is 123
+2024-03-29 05:26:05,638 - INFO - Fine-tuning on finance
+2024-03-29 05:26:09,362 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-29 05:27:04,374 - INFO - Fine-tuning on imdb
+2024-03-29 05:27:18,041 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-29 05:58:59,285 - INFO - Fine-tuning on amazon
+2024-03-29 05:59:04,298 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-29 06:44:52,974 - INFO - Evaluating Evaluating on sst2 using model: distilbert...
+2024-03-29 06:44:52,975 - INFO - Accuracy: 0.8440366972477065
+2024-03-29 06:44:52,975 - INFO - Macro F1 Score: 0.84377041923993
+2024-03-29 06:44:52,975 - INFO - Micro F1 Score: 0.8440366972477065
+2024-03-29 06:44:52,975 - INFO - Weighted F1 Score: 0.8438887650211641
+2024-03-29 06:44:52,975 - INFO - Matthews Correlation Coefficient: 0.688431793821502
+2024-03-29 06:44:52,975 - INFO - Cohen's Kappa Score: 0.6877054015336648
+2024-03-29 06:44:52,975 - INFO - ROC AUC: 0.8435631893575819
+2024-03-29 06:44:52,975 - INFO - PRC AUC: 0.8838898412806986
+2024-03-29 06:44:58,900 - INFO - Fine-tuning on finance
+2024-03-29 06:45:04,301 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-29 06:46:46,489 - INFO - Fine-tuning on imdb
+2024-03-29 06:48:43,425 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-29 07:49:21,432 - INFO - Fine-tuning on amazon
+2024-03-29 07:50:07,070 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-29 09:16:15,573 - INFO - Evaluating Evaluating on sst2 using model: roberta...
+2024-03-29 09:16:15,573 - INFO - Accuracy: 0.9094036697247706
+2024-03-29 09:16:15,573 - INFO - Macro F1 Score: 0.9093167293047502
+2024-03-29 09:16:15,573 - INFO - Micro F1 Score: 0.9094036697247706
+2024-03-29 09:16:15,573 - INFO - Weighted F1 Score: 0.9093682495536511
+2024-03-29 09:16:15,573 - INFO - Matthews Correlation Coefficient: 0.8189234322788627
+2024-03-29 09:16:15,573 - INFO - Cohen's Kappa Score: 0.818662342585183
+2024-03-29 09:16:15,574 - INFO - ROC AUC: 0.9091416182537678
+2024-03-29 09:16:15,574 - INFO - PRC AUC: 0.9317565751051988
+2024-03-29 09:16:20,660 - INFO - Fine-tuning on finance
+2024-03-29 09:16:23,903 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-29 09:17:55,470 - INFO - Fine-tuning on imdb
+2024-03-29 09:22:52,273 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-29 10:16:44,598 - INFO - Fine-tuning on amazon
+2024-03-29 10:18:11,358 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-29 11:36:24,870 - INFO - Evaluating Evaluating on sst2 using model: bert...
+2024-03-29 11:36:24,871 - INFO - Accuracy: 0.8727064220183486
+2024-03-29 11:36:24,871 - INFO - Macro F1 Score: 0.8725238543649043
+2024-03-29 11:36:24,871 - INFO - Micro F1 Score: 0.8727064220183486
+2024-03-29 11:36:24,871 - INFO - Weighted F1 Score: 0.872612372015059
+2024-03-29 11:36:24,871 - INFO - Matthews Correlation Coefficient: 0.7457129698822635
+2024-03-29 11:36:24,871 - INFO - Cohen's Kappa Score: 0.7451447107890635
+2024-03-29 11:36:24,871 - INFO - ROC AUC: 0.8723057169318851
+2024-03-29 11:36:24,871 - INFO - PRC AUC: 0.9046072966536558
