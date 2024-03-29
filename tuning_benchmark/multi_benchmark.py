@@ -24,13 +24,13 @@ def leave_one_out_fine_tuning_and_evaluation(input_string):
 
     for dataset_key in fine_tuning_datasets:
         dataset_name, fine_tuning_function, _ = dataset_functions[dataset_key]
-        print(f"Fine-tuning on {dataset_name}...")
+        logging.info("Fine-tuning on " + dataset_name)
         # Fine-tune model
         model = fine_tuning_function(model, tokenizer)
     
     # Evaluate on the left-out dataset
     test_dataset_name, _, custom_model_name = dataset_functions[testing_dataset]
-    print(f"Evaluating on {test_dataset_name}...")
+    logging.info("Evaluating on " + test_dataset_name)
     evaluate_model(model, tokenizer, dataset_name=test_dataset_name, custom_model_name=custom_model_name)
 
 start_logging()
