@@ -60,6 +60,8 @@ try:
     assert_valid_string(combination)
 except AssertionError as e:
     print(f"Please enter a valid combination: {e}")
+    start_logging(combination=combination)
+    logging.info("Please use a valid combination")
     sys.exit(-1)
 start_logging(combination=combination)
 # leave_one_out_fine_tuning_and_evaluation(combination, model_name="distilbert")
