@@ -19,25 +19,25 @@ from sklearn.model_selection import train_test_split
 
 from evaluate_batch import *
 
-def evaluate_model(fine_tuned_model, tokenizer, dataset_name, custom_model_name='distilbert-base-uncased'):
+def evaluate_model(fine_tuned_model, tokenizer, dataset_name, customMessage='distilbert-base-uncased'):
     retcode = 0
     if dataset_name == 'imdb':
         dataset = load_dataset(dataset_name)  # Load the IMDb dataset
         imdb_test_dataset = dataset['test']
         accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_imdb(fine_tuned_model, tokenizer, move_tensor_to_gpu(imdb_test_dataset))
-        printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
+        printOrLogEvaluationScores(customMessage, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
     elif dataset_name == 'finance':
         train_set, finance_test_set = getBinaryDataset_Financial(tokenizer)
         accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_finance(fine_tuned_model, tokenizer, finance_test_set)
-        printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
+        printOrLogEvaluationScores(customMessage, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
     elif dataset_name == 'amazon':
         train_set, test_set = getReducedTrainTestDataset_Amazon(tokenizer, 0.01)
         accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_amazon(fine_tuned_model, tokenizer, test_set)
-        printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)        
+        printOrLogEvaluationScores(customMessage, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)        
     elif dataset_name == 'sst2':
         train_set, test_set = getBinaryDataset_SST2(tokenizer)
         accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_sst2(fine_tuned_model, tokenizer, test_set)
-        printOrLogEvaluationScores(custom_model_name, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)        
+        printOrLogEvaluationScores(customMessage, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)        
     else:
         print("Dataset not found")
         retcode = -1
@@ -336,9 +336,6 @@ def downstreamTrain(dataset, model, epochs=3):
         
     return model
 
-
-def evaluateModel(model, model_name: str, dataset: Dict[str, Union[torch.Tensor, DataLoader]]):
-    print(f"Evaluating {model_name}...")
 
 def evaluateBaseModel(dataset: Dict[str, Union[torch.Tensor, DataLoader]], dataset_name: str, model_name: str) -> None:
     """
