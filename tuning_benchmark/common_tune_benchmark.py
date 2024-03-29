@@ -185,6 +185,23 @@ def getModel_Binary_DistilBert():
     
     return model, tokenizer
 
+def getModel_Binary_RoBERTa():
+    # Tokenization
+    tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
+
+    # Define model
+    model = RobertaForSequenceClassification.from_pretrained("roberta-base", num_labels=2)
+    
+    return model, tokenizer
+
+def getModel_Binary_BERT():
+    # Tokenization
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+
+    # Define model
+    model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
+    
+    return model, tokenizer
 
 def start_logging(log_file=None, log_level=logging.INFO, combination=None):
     """
