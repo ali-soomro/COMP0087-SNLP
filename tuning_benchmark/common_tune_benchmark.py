@@ -1,3 +1,5 @@
+import inspect
+import os
 import torch
 from torch.utils.data import DataLoader
 from transformers import BertForSequenceClassification, BertTokenizer
@@ -184,16 +186,35 @@ def getModel_Binary_DistilBert():
     return model, tokenizer
 
 
-def start_logging(log_file=f'evaluation_{datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.log', log_level=logging.INFO):
+def start_logging(log_file=None, log_level=logging.INFO, combination=None):
     """
     Initializes logging configuration.
 
     Args:
-        log_file (str): Path to the log file. If None, a default filename with timestamp will be used.
+        log_file (str): Path to the log file. If None, a default filename with timestamp and optional combination prefix will be used.
         log_level (int): Logging level (default: logging.INFO).
+        combination (str): Optional prefix for the log file name.
     """
+    # If log_file is None, construct the file name with optional combination prefix
+    if log_file is None:
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        if combination:
+            log_file = f'combo{combination}_{timestamp}.log'
+        else:
+            log_file = f'eval_{timestamp}.log'
+
+    # Initialize logging configuration
     logging.basicConfig(filename=log_file, level=log_level, format='%(asctime)s - %(levelname)s - %(message)s')
     logging.info("Logging started")
+    
+    # Report the name of the caller file
+    caller_file = inspect.stack()[1].filename  # Get the file name of the caller
+    caller_file_name = os.path.basename(caller_file)  # Extract the base name of the caller file
+    logging.info(f"Logging initiated from: {caller_file_name}")
+    
+    # Report the combination if it exists
+    if combination:
+        logging.info("Combination is " + combination)
 
 def move_tensor_to_gpu(dataset: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
     """

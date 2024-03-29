@@ -33,8 +33,6 @@ def leave_one_out_fine_tuning_and_evaluation(input_string):
     logging.info("Evaluating on " + test_dataset_name)
     evaluate_model(model, tokenizer, dataset_name=test_dataset_name, custom_model_name=custom_model_name)
 
-start_logging()
-logging.info("Multi fine tuning started")
 combination = "123"
-logging.info("Combination is " + combination)
+start_logging(combination=combination)
 leave_one_out_fine_tuning_and_evaluation(combination)  # Fine-tunes on 1, 2, 3 and tests on 4
