@@ -26,11 +26,11 @@ def leave_one_out_fine_tuning_and_evaluation(input_string, model_name):
     
     
     # Load the original pre-trained model and tokenizer
-    if model_name == "Distilbert":
+    if model_name == "distilbert":
         model, tokenizer = getModel_Binary_DistilBert()
     elif model_name == "roberta":
         model, tokenizer = getModel_Binary_RoBERTa()
-    elif model_name == "BERT":
+    elif model_name == "bert":
         model, tokenizer = getModel_Binary_BERT()
 
     for dataset_key in fine_tuning_datasets:
@@ -56,10 +56,11 @@ def assert_valid_string(input_string):
     assert set(input_string).issubset(valid_chars), "The input string must only contain characters from '1', '2', '3', and '4'."
 
 try:
-    combination = "122"  # If "123" then fine-tunes on 1, 2, 3 and tests on 4
+    combination = "123"  # If "123" then fine-tunes on 1, 2, 3 and tests on 4
     assert_valid_string(combination)
 except AssertionError as e:
     print(f"Please enter a valid combination: {e}")
     sys.exit(-1)
 start_logging(combination=combination)
-leave_one_out_fine_tuning_and_evaluation(combination, model_name="Distilbert")
+# leave_one_out_fine_tuning_and_evaluation(combination, model_name="distilbert")
+benchmark_all_models(combination)
