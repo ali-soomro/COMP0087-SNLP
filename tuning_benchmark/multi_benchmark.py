@@ -1,5 +1,6 @@
 from common_tune_benchmark import *
 from common_fine_tuning_training import *
+import argparse
 
 def benchmark_all_models(input_string):
     model_names = ["distilbert", "roberta", "bert"]
@@ -60,8 +61,19 @@ def assert_valid_string(input_string):
     valid_chars = set("1234")
     assert set(input_string).issubset(valid_chars), "The input string must only contain characters from '1', '2', '3', and '4'."
 
+# Create an ArgumentParser object
+parser = argparse.ArgumentParser(description='Process some numbers.')
+
+# Add an argument named 'combination'. The 'type=str' indicates that the argument should be parsed as a string.
+parser.add_argument('--combination', type=str, help='A number string to validate')
+
+# Parse the command-line arguments
+args = parser.parse_args()
+
 try:
-    combination = "132"  # If "123" then fine-tunes on 1, 2, 3 and tests on 4
+    # If "123" then fine-tunes on 1, 2, 3 and tests on 4
+    # Run like python multi_benchmark.py --combination 142
+    combination = args.combination  
     assert_valid_string(combination)
 except AssertionError as e:
     print(f"Please enter a valid combination: {e}")
