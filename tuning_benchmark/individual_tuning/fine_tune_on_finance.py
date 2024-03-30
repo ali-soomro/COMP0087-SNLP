@@ -13,4 +13,4 @@ fine_tuned_model = getFineTunedModel_Finance(model, tokenizer)
 logging.info("Training on Finance finished")
 
 # Evaluate on IMDB
-evaluate_model(fine_tuned_model, tokenizer, dataset_name="imdb", custom_model_name="Fine-tuned on Finance - Testing on IMDB")
+evaluate_model(fine_tuned_model=model, tokenizer=tokenizer, dataset_name="imdb", customMessage="Fine-tuned on Finance - Testing on IMDB")

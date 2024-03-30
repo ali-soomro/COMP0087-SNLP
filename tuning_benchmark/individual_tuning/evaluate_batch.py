@@ -5,60 +5,6 @@ from sklearn.metrics import f1_score, roc_curve, auc, precision_recall_curve, ma
 from torch.nn import Module
 from datasets import DatasetDict
 
-def evaluate_batch_adverserial(model, tokenizer: PreTrainedTokenizer, eval_dataset: DatasetDict, batch_size: int = 8):
-    """
-    Evaluate the given model on the adverserial dataset.
-
-    Args:
-        model (torch.nn.Module): The PyTorch model to evaluate.
-        tokenizer (transformers.PreTrainedTokenizer): The tokenizer for tokenizing input text.
-        eval_dataset (DatasetDict): The dataset to evaluate the model on. Should be tokenized.
-        batch_size (int, optional): Batch size for evaluation. Defaults to 8.
-
-    Returns:
-        tuple: A tuple containing evaluation metrics.
-    """
-    
-    model.eval()  # Set the model to evaluation mode
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model.to(device)  # Move model to the correct device
-    
-    total_accuracy = 0.0
-    total_samples = 0
-    all_labels = []
-    all_predictions = []
-    
-    with torch.no_grad():  # Disable gradient calculation for efficiency
-        for i in range(0, len(eval_dataset), batch_size):
-            batch = eval_dataset[i:i+batch_size]
-            texts = batch['text']  # Adjusted for the adverserial field
-            labels = torch.tensor(batch['label']).to(device)
-
-            # Tokenize texts and move to the correct device
-            inputs = tokenizer(texts, padding=True, truncation=True, return_tensors="pt").to(device)
-            
-            outputs = model(**inputs)
-            predicted_labels = torch.argmax(outputs.logits, dim=1)
-
-            total_accuracy += (predicted_labels == labels).sum().item()
-            all_labels.extend([labels.cpu().item()] if labels.dim() == 0 else labels.cpu().tolist())
-            all_predictions.extend([predicted_labels.cpu().item()] if predicted_labels.dim() == 0 else predicted_labels.cpu().tolist())
-            total_samples += labels.size(0)
-
-    # Calculate accuracy and other metrics
-    accuracy = total_accuracy / total_samples
-    macro_f1 = f1_score(all_labels, all_predictions, average='macro')
-    micro_f1 = f1_score(all_labels, all_predictions, average='micro')
-    weighted_f1 = f1_score(all_labels, all_predictions, average='weighted')
-    mcc = matthews_corrcoef(all_labels, all_predictions)
-    kappa = cohen_kappa_score(all_labels, all_predictions)
-    fpr, tpr, _ = roc_curve(all_labels, all_predictions)
-    roc_auc = auc(fpr, tpr)
-    precision, recall, _ = precision_recall_curve(all_labels, all_predictions)
-    prc_auc = auc(recall, precision)
-
-    return accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc
-
 def evaluate_batch_sst2(model, tokenizer: PreTrainedTokenizer, eval_dataset: DatasetDict, batch_size: int = 8):
     """
     Evaluate the given model on the SST-2 dataset.

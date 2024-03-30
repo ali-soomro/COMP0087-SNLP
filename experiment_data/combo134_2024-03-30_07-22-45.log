@@ -1,0 +1,75 @@
+2024-03-30 07:22:45,668 - INFO - Logging started
+2024-03-30 07:22:45,669 - INFO - Logging initiated from: multi_benchmark.py
+2024-03-30 07:22:45,669 - INFO - Combination is 134
+2024-03-30 07:22:46,282 - INFO - Fine-tuning on finance
+2024-03-30 07:22:50,244 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 07:23:27,213 - INFO - Fine-tuning on amazon
+2024-03-30 07:23:32,340 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 07:53:55,220 - INFO - Fine-tuning on sst2
+2024-03-30 07:54:02,410 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 08:51:39,651 - INFO - Evaluating Evaluating on imdb using model: distilbert...
+2024-03-30 08:51:39,652 - INFO - Accuracy: 0.9053514376996805
+2024-03-30 08:51:39,652 - INFO - Macro F1 Score: 0.9051998634878033
+2024-03-30 08:51:39,652 - INFO - Micro F1 Score: 0.9051999999999999
+2024-03-30 08:51:39,652 - INFO - Weighted F1 Score: 0.9052005005447209
+2024-03-30 08:51:39,652 - INFO - Matthews Correlation Coefficient: 0.8104347770885516
+2024-03-30 08:51:39,652 - INFO - Cohen's Kappa Score: 0.8104033975711156
+2024-03-30 08:51:39,652 - INFO - ROC AUC: 0.9052216677515007
+2024-03-30 08:51:39,652 - INFO - PRC AUC: 0.9301311088721776
+2024-03-30 08:51:42,782 - INFO - Evaluating ADVERSARY...
+2024-03-30 08:51:42,783 - INFO - Accuracy: 0.86
+2024-03-30 08:51:42,783 - INFO - Macro F1 Score: 0.8572011423908609
+2024-03-30 08:51:42,783 - INFO - Micro F1 Score: 0.8599999999999999
+2024-03-30 08:51:42,783 - INFO - Weighted F1 Score: 0.8596001631986944
+2024-03-30 08:51:42,783 - INFO - Matthews Correlation Coefficient: 0.7151137162376162
+2024-03-30 08:51:42,783 - INFO - Cohen's Kappa Score: 0.7145187601957586
+2024-03-30 08:51:42,783 - INFO - ROC AUC: 0.8555194805194805
+2024-03-30 08:51:42,783 - INFO - PRC AUC: 0.9074630541871922
+2024-03-30 08:51:43,618 - INFO - Fine-tuning on finance
+2024-03-30 08:51:48,615 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 08:52:54,881 - INFO - Fine-tuning on amazon
+2024-03-30 08:53:01,622 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 09:49:52,244 - INFO - Fine-tuning on sst2
+2024-03-30 09:50:00,520 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 11:37:43,465 - INFO - Evaluating Evaluating on imdb using model: roberta...
+2024-03-30 11:37:43,465 - INFO - Accuracy: 0.9289137380191693
+2024-03-30 11:37:43,465 - INFO - Macro F1 Score: 0.9287983595142032
+2024-03-30 11:37:43,465 - INFO - Micro F1 Score: 0.9288
+2024-03-30 11:37:43,465 - INFO - Weighted F1 Score: 0.9288002734142994
+2024-03-30 11:37:43,465 - INFO - Matthews Correlation Coefficient: 0.8575979079437523
+2024-03-30 11:37:43,466 - INFO - Cohen's Kappa Score: 0.8575968101685478
+2024-03-30 11:37:43,466 - INFO - ROC AUC: 0.9288022472384734
+2024-03-30 11:37:43,466 - INFO - PRC AUC: 0.9471407163707936
+2024-03-30 11:37:48,539 - INFO - Evaluating ADVERSARY...
+2024-03-30 11:37:48,539 - INFO - Accuracy: 0.88
+2024-03-30 11:37:48,539 - INFO - Macro F1 Score: 0.8782467532467533
+2024-03-30 11:37:48,539 - INFO - Micro F1 Score: 0.88
+2024-03-30 11:37:48,539 - INFO - Weighted F1 Score: 0.88
+2024-03-30 11:37:48,539 - INFO - Matthews Correlation Coefficient: 0.7564935064935064
+2024-03-30 11:37:48,539 - INFO - Cohen's Kappa Score: 0.7564935064935066
+2024-03-30 11:37:48,539 - INFO - ROC AUC: 0.8782467532467532
+2024-03-30 11:37:48,540 - INFO - PRC AUC: 0.9228571428571428
+2024-03-30 11:37:49,267 - INFO - Fine-tuning on finance
+2024-03-30 11:37:51,936 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 11:38:57,021 - INFO - Fine-tuning on amazon
+2024-03-30 11:39:01,660 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 12:34:36,838 - INFO - Fine-tuning on sst2
+2024-03-30 12:34:43,039 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 14:20:16,282 - INFO - Evaluating Evaluating on imdb using model: bert...
+2024-03-30 14:20:16,282 - INFO - Accuracy: 0.9041533546325878
+2024-03-30 14:20:16,282 - INFO - Macro F1 Score: 0.9039645975092256
+2024-03-30 14:20:16,283 - INFO - Micro F1 Score: 0.904
+2024-03-30 14:20:16,283 - INFO - Weighted F1 Score: 0.9039542717827499
+2024-03-30 14:20:16,283 - INFO - Matthews Correlation Coefficient: 0.8090426062580244
+2024-03-30 14:20:16,283 - INFO - Cohen's Kappa Score: 0.8080472971459832
+2024-03-30 14:20:16,283 - INFO - ROC AUC: 0.9041358737009992
+2024-03-30 14:20:16,283 - INFO - PRC AUC: 0.9328978626802874
+2024-03-30 14:20:19,363 - INFO - Evaluating ADVERSARY...
+2024-03-30 14:20:19,364 - INFO - Accuracy: 0.96
+2024-03-30 14:20:19,364 - INFO - Macro F1 Score: 0.9589490968801313
+2024-03-30 14:20:19,364 - INFO - Micro F1 Score: 0.96
+2024-03-30 14:20:19,364 - INFO - Weighted F1 Score: 0.959737274220033
+2024-03-30 14:20:19,364 - INFO - Matthews Correlation Coefficient: 0.9211323729436766
+2024-03-30 14:20:19,364 - INFO - Cohen's Kappa Score: 0.9180327868852459
+2024-03-30 14:20:19,365 - INFO - ROC AUC: 0.9545454545454545
+2024-03-30 14:20:19,365 - INFO - PRC AUC: 0.9666666666666667

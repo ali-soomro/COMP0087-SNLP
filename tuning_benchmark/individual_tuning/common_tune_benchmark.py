@@ -19,13 +19,15 @@ from sklearn.model_selection import train_test_split
 
 from evaluate_batch import *
 
-def evaluate_model(fine_tuned_model, tokenizer, dataset_name, customMessage='distilbert-base-uncased'):
+def evaluate_model(fine_tuned_model, tokenizer, dataset_name, customMessage='Evaluating on model'):
     retcode = 0
     if dataset_name == 'imdb':
         train_set, test_set = getReducedTrainTestDataset_IMDB(tokenizer)
         # train_set, test_set = getBinaryDataset_IMDB(tokenizer)
         # accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_imdb(fine_tuned_model, tokenizer, move_tensor_to_gpu(test_set))
         accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_imdb(fine_tuned_model, tokenizer, test_set)
+        for i in range(5):
+            print(test_set[i])
         printOrLogEvaluationScores(customMessage, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
         
     elif dataset_name == 'finance':
@@ -42,16 +44,10 @@ def evaluate_model(fine_tuned_model, tokenizer, dataset_name, customMessage='dis
         train_set, test_set = getBinaryDataset_SST2(tokenizer)
         accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_sst2(fine_tuned_model, tokenizer, test_set)
         printOrLogEvaluationScores(customMessage, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)        
-    
-    elif dataset_name == 'adverserial':
-        train_set, test_set = getBinaryDataset_Adverserial(tokenizer)
-        accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc = evaluate_batch_adverserial(fine_tuned_model, tokenizer, test_set)
-        printOrLogEvaluationScores(customMessage, accuracy, macro_f1, micro_f1, weighted_f1, mcc, kappa, roc_auc, prc_auc)
         
     else:
         print("Dataset not found")
         retcode = -1
-        
     return retcode
 
 def getDefaultTrainingArguments():
@@ -66,21 +62,6 @@ def getDefaultTrainingArguments():
         output_dir="./results"
     )
     return training_args
-
-def getBinaryDataset_Adverserial(tokenizer: PreTrainedTokenizer):
-    def tokenize_function(examples):
-        # Adjust the field name if necessary.
-        return tokenizer(examples['text'], padding='max_length', truncation=True)
-    
-    dataset = load_dataset("nathandsouza10/comp0087-snlp")
-    train_set = dataset['train']
-    test_set = dataset['train']
-    
-    # Tokenize the datasets
-    train_set = train_set.map(tokenize_function, batched=True)
-    test_set = test_set.map(tokenize_function, batched=True)
-    
-    return train_set, test_set  
 
 def getBinaryDataset_SST2(tokenizer: PreTrainedTokenizer):
     def tokenize_function(examples):
@@ -100,6 +81,24 @@ def getBinaryDataset_SST2(tokenizer: PreTrainedTokenizer):
     
     return train_set, test_set
 
+def getReducedTrainTestDataset_IMDB(tokenizer: PreTrainedTokenizer, sample_fraction: float = 0.1):
+    # Load the IMDB dataset
+    dataset = load_dataset("imdb")
+    
+    # Shuffle and reduce each of the original splits separately
+    reduced_train = dataset["train"].shuffle(seed=42).select(range(int(dataset["train"].num_rows * sample_fraction)))
+    reduced_test = dataset["test"].shuffle(seed=42).select(range(int(dataset["test"].num_rows * sample_fraction)))
+    
+    # Tokenize the text function
+    def tokenize_function(examples):
+        return tokenizer(examples['text'], padding="max_length", truncation=True)
+    
+    # Apply tokenization to reduced splits
+    tokenized_train_set = reduced_train.map(tokenize_function, batched=True)
+    tokenized_test_set = reduced_test.map(tokenize_function, batched=True)
+    
+    return tokenized_train_set, tokenized_test_set
+
 def getBinaryDataset_IMDB(tokenizer):
     def tokenize_function(examples):
         return tokenizer(examples['text'], padding='max_length', truncation=True)
@@ -114,6 +113,11 @@ def getBinaryDataset_IMDB(tokenizer):
     # Tokenize the datasets
     train_set = train_set.map(tokenize_function, batched=True)
     test_set = test_set.map(tokenize_function, batched=True)
+    
+    # Reduce the test set to 10% of its original size
+    test_set_size = len(test_set)
+    subset_size = int(test_set_size * 0.10)
+    test_set = test_set.select(range(subset_size))
     
     return train_set, test_set
 
@@ -136,24 +140,6 @@ def getBinaryDataset_Amazon(tokenizer: PreTrainedTokenizer):
     print(f"Size of test set: {test_set.num_rows}")
     
     return train_set, test_set
-
-def getReducedTrainTestDataset_IMDB(tokenizer: PreTrainedTokenizer, sample_fraction: float = 0.1):
-    # Load the IMDB dataset
-    dataset = load_dataset("imdb")
-    
-    # Shuffle and reduce each of the original splits separately
-    reduced_train = dataset["train"].shuffle(seed=42).select(range(int(dataset["train"].num_rows * sample_fraction)))
-    reduced_test = dataset["test"].shuffle(seed=42).select(range(int(dataset["test"].num_rows * sample_fraction)))
-    
-    # Tokenize the text function
-    def tokenize_function(examples):
-        return tokenizer(examples['text'], padding="max_length", truncation=True)
-    
-    # Apply tokenization to reduced splits
-    tokenized_train_set = reduced_train.map(tokenize_function, batched=True)
-    tokenized_test_set = reduced_test.map(tokenize_function, batched=True)
-    
-    return tokenized_train_set, tokenized_test_set
 
 def getReducedTrainTestDataset_Amazon(tokenizer: PreTrainedTokenizer, sample_fraction: float = 0.1):
     # Load the dataset
@@ -277,22 +263,24 @@ def start_logging(log_file=None, log_level=logging.INFO, combination=None):
     if combination:
         logging.info("Combination is " + combination)
 
-def move_tensor_to_gpu(dataset: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
+def move_tensor_to_gpu(dataset):
     """
     Moves tensors in the dataset to the GPU.
 
     Args:
-        dataset (dict): The dataset containing tensors to move.
+        dataset (Dataset): The dataset containing tensors to move.
 
     Returns:
-        dict: The modified dataset with tensors moved to the GPU.
+        Dataset: The modified dataset with tensors moved to the GPU.
     """
-    # Iterate through each key in the dataset
-    for key in dataset.keys():
-        # Check if the value corresponding to the key is a torch.Tensor
-        if isinstance(dataset[key], torch.Tensor):
-            # Move the tensor to the GPU
-            dataset[key] = dataset[key].cuda()
+    # Iterate through the dataset
+    for i in range(len(dataset)):
+        # Fetch a sample from the dataset
+        sample = dataset[i]
+        # Move tensors to GPU if they are torch.Tensor
+        for key in sample.keys():
+            if isinstance(sample[key], torch.Tensor):
+                sample[key] = sample[key].cuda()
     return dataset
 
 

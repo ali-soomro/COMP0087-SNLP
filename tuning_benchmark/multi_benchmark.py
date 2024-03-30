@@ -6,16 +6,19 @@ def benchmark_all_models(input_string):
     
     for model_name in model_names:
         print(f"Starting fine-tuning and evaluation for {model_name.upper()} model.")
-        leave_one_out_fine_tuning_and_evaluation(input_string, model_name=model_name)
-        print(f"Completed fine-tuning and evaluation for {model_name.upper()} model.\n")
+        logging.info("Starting fine-tuning for " + model_name.upper())
+        fine_tuned_model, tokenizer = leave_one_out_fine_tuning_and_evaluation(input_string, model_name=model_name)
+        logging.info("Completed fine-tuning for " + model_name.upper())
+        evaluate_model(fine_tuned_model, tokenizer, dataset_name='adverserial', customMessage="ADVERSERIAL")
+        logging.info("EVALUATION COMPLETED FOR " + model_name.upper())
 
 def leave_one_out_fine_tuning_and_evaluation(input_string, model_name):
     # Defining fine-tuning functions which take a model and tokenizer, and return the fine-tuned model
     dataset_functions = {
-        '1': ('finance', getFineTunedModel_Finance, "Fine tuning on Finance"),
-        '2': ('imdb', getFineTunedModel_IMDB, "Fine tuning on IMDB"),
-        '3': ('amazon', getFineTunedModel_Amazon, "Fine tuning on Amazon"),
-        '4': ('sst2', getFineTunedModel_glue, "Fine tuning on sst2")
+        '1': ('finance', getFineTunedModel_Finance, "Fine tuning on Finance started"),
+        '2': ('imdb', getFineTunedModel_IMDB, "Fine tuning on IMDB started"),
+        '3': ('amazon', getFineTunedModel_Amazon, "Fine tuning on Amazon started"),
+        '4': ('sst2', getFineTunedModel_glue, "Fine tuning on sst2 started")
     }
 
     datasets_to_use = list(dataset_functions.keys())
@@ -43,6 +46,8 @@ def leave_one_out_fine_tuning_and_evaluation(input_string, model_name):
     test_dataset_name, _, custom_model_name = dataset_functions[testing_dataset]
     logMessage = "Evaluating on " + test_dataset_name + " using model: " + model_name
     evaluate_model(model, tokenizer, dataset_name=test_dataset_name, customMessage=logMessage)
+    
+    return model, tokenizer
 
 def assert_valid_string(input_string):
     # Check if the length of the string is 3
@@ -56,7 +61,7 @@ def assert_valid_string(input_string):
     assert set(input_string).issubset(valid_chars), "The input string must only contain characters from '1', '2', '3', and '4'."
 
 try:
-    combination = "123"  # If "123" then fine-tunes on 1, 2, 3 and tests on 4
+    combination = "134"  # If "123" then fine-tunes on 1, 2, 3 and tests on 4
     assert_valid_string(combination)
 except AssertionError as e:
     print(f"Please enter a valid combination: {e}")
