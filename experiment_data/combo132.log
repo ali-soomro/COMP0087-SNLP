@@ -1,0 +1,63 @@
+Combo 132
+
+Evaluation scores for Evaluating on imdb using model: distilbert:
+Accuracy: 0.9053514376996805
+Macro F1 Score: 0.9051998634878033
+Micro F1 Score: 0.9051999999999999
+Weighted F1 Score: 0.9052005005447209
+Matthews Correlation Coefficient: 0.8104347770885516
+Cohen's Kappa Score: 0.8104033975711156
+ROC AUC: 0.9052216677515007
+PRC AUC: 0.9301311088721776
+Completed fine-tuning and evaluation for DISTILBERT model.
+
+Evaluation scores for ADVERSERIAL:
+Accuracy: 0.86
+Macro F1 Score: 0.8572011423908609
+Micro F1 Score: 0.8599999999999999
+Weighted F1 Score: 0.8596001631986944
+Matthews Correlation Coefficient: 0.7151137162376162
+Cohen's Kappa Score: 0.7145187601957586
+ROC AUC: 0.8555194805194805
+PRC AUC: 0.9074630541871922
+
+Evaluation scores for Evaluating on imdb using model: roberta:
+Accuracy: 0.9289137380191693
+Macro F1 Score: 0.9287983595142032
+Micro F1 Score: 0.9288
+Weighted F1 Score: 0.9288002734142994
+Matthews Correlation Coefficient: 0.8575979079437523
+Cohen's Kappa Score: 0.8575968101685478
+ROC AUC: 0.9288022472384734
+PRC AUC: 0.9471407163707936
+Completed fine-tuning and evaluation for ROBERTA model.
+
+Evaluation scores for ADVERSERIAL:
+Accuracy: 0.88
+Macro F1 Score: 0.8782467532467533
+Micro F1 Score: 0.88
+Weighted F1 Score: 0.88
+Matthews Correlation Coefficient: 0.7564935064935064
+Cohen's Kappa Score: 0.7564935064935066
+ROC AUC: 0.8782467532467532
+PRC AUC: 0.9228571428571428
+
+Evaluation scores for Evaluating on imdb using model: bert:
+Accuracy: 0.9041533546325878
+Macro F1 Score: 0.9039645975092256
+Micro F1 Score: 0.904
+Weighted F1 Score: 0.9039542717827499
+Matthews Correlation Coefficient: 0.8090426062580244
+Cohen's Kappa Score: 0.8080472971459832
+ROC AUC: 0.9041358737009992
+PRC AUC: 0.9328978626802874
+
+Evaluation scores for ADVERSERIAL:
+Accuracy: 0.96
+Macro F1 Score: 0.9589490968801313
+Micro F1 Score: 0.96
+Weighted F1 Score: 0.959737274220033
+Matthews Correlation Coefficient: 0.9211323729436766
+Cohen's Kappa Score: 0.9180327868852459
+ROC AUC: 0.9545454545454545
+PRC AUC: 0.9666666666666667

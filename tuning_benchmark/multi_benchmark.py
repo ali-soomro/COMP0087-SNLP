@@ -61,7 +61,7 @@ def assert_valid_string(input_string):
     assert set(input_string).issubset(valid_chars), "The input string must only contain characters from '1', '2', '3', and '4'."
 
 try:
-    combination = "134"  # If "123" then fine-tunes on 1, 2, 3 and tests on 4
+    combination = "132"  # If "123" then fine-tunes on 1, 2, 3 and tests on 4
     assert_valid_string(combination)
 except AssertionError as e:
     print(f"Please enter a valid combination: {e}")
