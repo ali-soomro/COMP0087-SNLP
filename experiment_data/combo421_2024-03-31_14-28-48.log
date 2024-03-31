@@ -1,0 +1,84 @@
+2024-03-31 14:28:48,694 - INFO - Logging started
+2024-03-31 14:28:48,695 - INFO - Logging initiated from: multi_benchmark.py
+2024-03-31 14:28:48,695 - INFO - Combination is 421
+2024-03-31 14:28:48,695 - INFO - Starting fine-tuning for DISTILBERT
+2024-03-31 14:28:49,499 - INFO - Fine-tuning on sst2
+2024-03-31 14:28:57,760 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 15:25:22,055 - INFO - Fine-tuning on imdb
+2024-03-31 15:25:33,345 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 15:46:38,753 - INFO - Fine-tuning on finance
+2024-03-31 15:46:41,425 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 15:47:52,741 - INFO - Evaluating Evaluating on amazon using model: distilbert...
+2024-03-31 15:47:52,742 - INFO - Accuracy: 0.897
+2024-03-31 15:47:52,742 - INFO - Macro F1 Score: 0.8964328663762764
+2024-03-31 15:47:52,742 - INFO - Micro F1 Score: 0.897
+2024-03-31 15:47:52,742 - INFO - Weighted F1 Score: 0.8965784817661513
+2024-03-31 15:47:52,742 - INFO - Matthews Correlation Coefficient: 0.7983625569134772
+2024-03-31 15:47:52,742 - INFO - Cohen's Kappa Score: 0.7934938534347686
+2024-03-31 15:47:52,742 - INFO - ROC AUC: 0.8959174261908549
+2024-03-31 15:47:52,742 - INFO - PRC AUC: 0.918474069734391
+2024-03-31 15:47:52,743 - INFO - Completed fine-tuning for DISTILBERT
+2024-03-31 15:47:55,752 - INFO - Evaluating ADVERSERIAL...
+2024-03-31 15:47:55,752 - INFO - Accuracy: 0.82
+2024-03-31 15:47:55,752 - INFO - Macro F1 Score: 0.8181818181818182
+2024-03-31 15:47:55,752 - INFO - Micro F1 Score: 0.82
+2024-03-31 15:47:55,752 - INFO - Weighted F1 Score: 0.8203636363636364
+2024-03-31 15:47:55,753 - INFO - Matthews Correlation Coefficient: 0.6370302645726269
+2024-03-31 15:47:55,753 - INFO - Cohen's Kappa Score: 0.6365105008077545
+2024-03-31 15:47:55,753 - INFO - ROC AUC: 0.8198051948051948
+2024-03-31 15:47:55,753 - INFO - PRC AUC: 0.8866402116402117
+2024-03-31 15:47:55,753 - INFO - EVALUATION COMPLETED FOR DISTILBERT
+2024-03-31 15:47:55,754 - INFO - Starting fine-tuning for ROBERTA
+2024-03-31 15:47:56,533 - INFO - Fine-tuning on sst2
+2024-03-31 15:48:05,359 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 17:33:55,136 - INFO - Fine-tuning on imdb
+2024-03-31 17:34:05,419 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 18:13:41,279 - INFO - Fine-tuning on finance
+2024-03-31 18:13:46,253 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 18:15:49,267 - INFO - Evaluating Evaluating on amazon using model: roberta...
+2024-03-31 18:15:49,268 - INFO - Accuracy: 0.928
+2024-03-31 18:15:49,268 - INFO - Macro F1 Score: 0.9278634997073212
+2024-03-31 18:15:49,268 - INFO - Micro F1 Score: 0.928
+2024-03-31 18:15:49,268 - INFO - Weighted F1 Score: 0.9279231205248132
+2024-03-31 18:15:49,268 - INFO - Matthews Correlation Coefficient: 0.8568456390713379
+2024-03-31 18:15:49,268 - INFO - Cohen's Kappa Score: 0.855813711315019
+2024-03-31 18:15:49,268 - INFO - ROC AUC: 0.9275083305073133
+2024-03-31 18:15:49,268 - INFO - PRC AUC: 0.9433899334921142
+2024-03-31 18:15:49,273 - INFO - Completed fine-tuning for ROBERTA
+2024-03-31 18:15:54,316 - INFO - Evaluating ADVERSERIAL...
+2024-03-31 18:15:54,316 - INFO - Accuracy: 0.82
+2024-03-31 18:15:54,316 - INFO - Macro F1 Score: 0.8164014687882497
+2024-03-31 18:15:54,316 - INFO - Micro F1 Score: 0.82
+2024-03-31 18:15:54,316 - INFO - Weighted F1 Score: 0.819485924112607
+2024-03-31 18:15:54,316 - INFO - Matthews Correlation Coefficient: 0.6334797303657422
+2024-03-31 18:15:54,316 - INFO - Cohen's Kappa Score: 0.632952691680261
+2024-03-31 18:15:54,316 - INFO - ROC AUC: 0.814935064935065
+2024-03-31 18:15:54,316 - INFO - PRC AUC: 0.8823645320197044
+2024-03-31 18:15:54,316 - INFO - EVALUATION COMPLETED FOR ROBERTA
+2024-03-31 18:15:54,316 - INFO - Starting fine-tuning for BERT
+2024-03-31 18:15:55,002 - INFO - Fine-tuning on sst2
+2024-03-31 18:16:01,815 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 19:58:45,880 - INFO - Fine-tuning on imdb
+2024-03-31 19:58:56,173 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 20:37:41,032 - INFO - Fine-tuning on finance
+2024-03-31 20:37:43,525 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 20:39:47,506 - INFO - Evaluating Evaluating on amazon using model: bert...
+2024-03-31 20:39:47,507 - INFO - Accuracy: 0.89725
+2024-03-31 20:39:47,507 - INFO - Macro F1 Score: 0.8965586952955789
+2024-03-31 20:39:47,507 - INFO - Micro F1 Score: 0.8972499999999999
+2024-03-31 20:39:47,507 - INFO - Weighted F1 Score: 0.8967193655021111
+2024-03-31 20:39:47,507 - INFO - Matthews Correlation Coefficient: 0.8002967242584739
+2024-03-31 20:39:47,507 - INFO - Cohen's Kappa Score: 0.7939342464736936
+2024-03-31 20:39:47,507 - INFO - ROC AUC: 0.8960202132970003
+2024-03-31 20:39:47,507 - INFO - PRC AUC: 0.9180705992005971
+2024-03-31 20:39:47,522 - INFO - Completed fine-tuning for BERT
+2024-03-31 20:39:50,974 - INFO - Evaluating ADVERSERIAL...
+2024-03-31 20:39:50,974 - INFO - Accuracy: 0.86
+2024-03-31 20:39:50,974 - INFO - Macro F1 Score: 0.8572011423908609
+2024-03-31 20:39:50,974 - INFO - Micro F1 Score: 0.8599999999999999
+2024-03-31 20:39:50,974 - INFO - Weighted F1 Score: 0.8596001631986944
+2024-03-31 20:39:50,974 - INFO - Matthews Correlation Coefficient: 0.7151137162376162
+2024-03-31 20:39:50,974 - INFO - Cohen's Kappa Score: 0.7145187601957586
+2024-03-31 20:39:50,974 - INFO - ROC AUC: 0.8555194805194805
+2024-03-31 20:39:50,974 - INFO - PRC AUC: 0.9074630541871922
+2024-03-31 20:39:50,974 - INFO - EVALUATION COMPLETED FOR BERT
