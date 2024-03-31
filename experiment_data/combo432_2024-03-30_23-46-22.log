@@ -1,0 +1,90 @@
+2024-03-30 23:46:22,013 - INFO - Logging started
+2024-03-30 23:46:22,013 - INFO - Logging initiated from: multi_benchmark.py
+2024-03-30 23:46:22,013 - INFO - Logging started
+2024-03-30 23:46:22,014 - INFO - Combination is 432
+2024-03-30 23:46:22,014 - INFO - Starting fine-tuning for DISTILBERT
+2024-03-30 23:46:22,014 - INFO - Logging initiated from: multi_benchmark.py
+2024-03-30 23:46:22,014 - INFO - Combination is 432
+2024-03-30 23:46:22,014 - INFO - Starting fine-tuning for DISTILBERT
+2024-03-30 23:46:22,633 - INFO - Fine-tuning on sst2
+2024-03-30 23:46:22,648 - INFO - Fine-tuning on sst2
+2024-03-30 23:46:29,826 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-30 23:46:30,458 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 00:43:42,263 - INFO - Fine-tuning on amazon
+2024-03-31 00:43:46,961 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 02:13:41,620 - INFO - Fine-tuning on imdb
+2024-03-31 02:13:50,902 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 02:34:53,151 - INFO - Evaluating Evaluating on finance using model: distilbert...
+2024-03-31 02:34:53,151 - INFO - Accuracy: 0.7142857142857143
+2024-03-31 02:34:53,151 - INFO - Macro F1 Score: 0.7073187048434573
+2024-03-31 02:34:53,151 - INFO - Micro F1 Score: 0.7142857142857143
+2024-03-31 02:34:53,151 - INFO - Weighted F1 Score: 0.722026835888222
+2024-03-31 02:34:53,151 - INFO - Matthews Correlation Coefficient: 0.4592633461658013
+2024-03-31 02:34:53,151 - INFO - Cohen's Kappa Score: 0.43174438238732304
+2024-03-31 02:34:53,151 - INFO - ROC AUC: 0.7428404441846873
+2024-03-31 02:34:53,151 - INFO - PRC AUC: 0.8837323862985451
+2024-03-31 02:34:53,152 - INFO - Completed fine-tuning for DISTILBERT
+2024-03-31 02:34:58,780 - INFO - Evaluating ADVERSERIAL...
+2024-03-31 02:34:58,780 - INFO - Accuracy: 0.84
+2024-03-31 02:34:58,780 - INFO - Macro F1 Score: 0.8389694041867954
+2024-03-31 02:34:58,781 - INFO - Micro F1 Score: 0.8399999999999999
+2024-03-31 02:34:58,781 - INFO - Weighted F1 Score: 0.8405152979066023
+2024-03-31 02:34:58,781 - INFO - Matthews Correlation Coefficient: 0.6806593270844965
+2024-03-31 02:34:58,781 - INFO - Cohen's Kappa Score: 0.6784565916398714
+2024-03-31 02:34:58,781 - INFO - ROC AUC: 0.8425324675324675
+2024-03-31 02:34:58,781 - INFO - PRC AUC: 0.9030219780219779
+2024-03-31 02:34:58,781 - INFO - EVALUATION COMPLETED FOR DISTILBERT
+2024-03-31 02:34:58,781 - INFO - Starting fine-tuning for ROBERTA
+2024-03-31 02:34:59,639 - INFO - Fine-tuning on sst2
+2024-03-31 02:35:09,661 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 04:20:33,142 - INFO - Fine-tuning on amazon
+2024-03-31 04:20:41,850 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 05:17:29,193 - INFO - Fine-tuning on imdb
+2024-03-31 05:17:40,798 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 05:57:36,232 - INFO - Evaluating Evaluating on finance using model: roberta...
+2024-03-31 05:57:36,232 - INFO - Accuracy: 0.7828571428571428
+2024-03-31 05:57:36,233 - INFO - Macro F1 Score: 0.7758225458468176
+2024-03-31 05:57:36,233 - INFO - Micro F1 Score: 0.7828571428571428
+2024-03-31 05:57:36,233 - INFO - Weighted F1 Score: 0.7887571274464478
+2024-03-31 05:57:36,233 - INFO - Matthews Correlation Coefficient: 0.5887404576165033
+2024-03-31 05:57:36,233 - INFO - Cohen's Kappa Score: 0.5616348055372445
+2024-03-31 05:57:36,233 - INFO - ROC AUC: 0.8112215078901228
+2024-03-31 05:57:36,233 - INFO - PRC AUC: 0.9201642036124794
+2024-03-31 05:57:36,236 - INFO - Completed fine-tuning for ROBERTA
+2024-03-31 05:57:41,157 - INFO - Evaluating ADVERSERIAL...
+2024-03-31 05:57:41,157 - INFO - Accuracy: 0.88
+2024-03-31 05:57:41,157 - INFO - Macro F1 Score: 0.8792270531400966
+2024-03-31 05:57:41,157 - INFO - Micro F1 Score: 0.88
+2024-03-31 05:57:41,157 - INFO - Weighted F1 Score: 0.8803864734299518
+2024-03-31 05:57:41,157 - INFO - Matthews Correlation Coefficient: 0.761306166786451
+2024-03-31 05:57:41,157 - INFO - Cohen's Kappa Score: 0.7588424437299035
+2024-03-31 05:57:41,158 - INFO - ROC AUC: 0.8831168831168831
+2024-03-31 05:57:41,158 - INFO - PRC AUC: 0.9301098901098901
+2024-03-31 05:57:41,158 - INFO - EVALUATION COMPLETED FOR ROBERTA
+2024-03-31 05:57:41,158 - INFO - Starting fine-tuning for BERT
+2024-03-31 05:57:42,009 - INFO - Fine-tuning on sst2
+2024-03-31 05:57:49,519 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 07:41:07,608 - INFO - Fine-tuning on amazon
+2024-03-31 07:41:13,235 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 08:36:22,687 - INFO - Fine-tuning on imdb
+2024-03-31 08:36:33,850 - WARNING - Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2024-03-31 09:15:25,927 - INFO - Evaluating Evaluating on finance using model: bert...
+2024-03-31 09:15:25,928 - INFO - Accuracy: 0.6971428571428572
+2024-03-31 09:15:25,928 - INFO - Macro F1 Score: 0.6678127574227284
+2024-03-31 09:15:25,928 - INFO - Micro F1 Score: 0.6971428571428572
+2024-03-31 09:15:25,928 - INFO - Weighted F1 Score: 0.6999630590390233
+2024-03-31 09:15:25,928 - INFO - Matthews Correlation Coefficient: 0.3368810173607198
+2024-03-31 09:15:25,928 - INFO - Cohen's Kappa Score: 0.33621985257281894
+2024-03-31 09:15:25,928 - INFO - ROC AUC: 0.6716101694915254
+2024-03-31 09:15:25,928 - INFO - PRC AUC: 0.8497490347490346
+2024-03-31 09:15:25,940 - INFO - Completed fine-tuning for BERT
+2024-03-31 09:15:30,371 - INFO - Evaluating ADVERSERIAL...
+2024-03-31 09:15:30,371 - INFO - Accuracy: 0.88
+2024-03-31 09:15:30,371 - INFO - Macro F1 Score: 0.8768472906403941
+2024-03-31 09:15:30,371 - INFO - Micro F1 Score: 0.88
+2024-03-31 09:15:30,371 - INFO - Weighted F1 Score: 0.8792118226600985
+2024-03-31 09:15:30,371 - INFO - Matthews Correlation Coefficient: 0.7566444492037343
+2024-03-31 09:15:30,371 - INFO - Cohen's Kappa Score: 0.7540983606557377
+2024-03-31 09:15:30,371 - INFO - ROC AUC: 0.8733766233766233
+2024-03-31 09:15:30,372 - INFO - PRC AUC: 0.9176190476190477
+2024-03-31 09:15:30,372 - INFO - EVALUATION COMPLETED FOR BERT
