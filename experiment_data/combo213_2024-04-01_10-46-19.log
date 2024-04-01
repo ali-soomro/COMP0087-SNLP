@@ -1,0 +1,5 @@
+2024-04-01 10:46:19,715 - INFO - Logging started
+2024-04-01 10:46:19,715 - INFO - Logging initiated from: multi_benchmark.py
+2024-04-01 10:46:19,715 - INFO - Combination is 213
+2024-04-01 10:46:19,715 - INFO - Starting fine-tuning for DISTILBERT
+2024-04-01 10:46:20,168 - INFO - Fine-tuning on imdb
